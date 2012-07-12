@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Action
+Bundle-SymbolicName: com.areteinc.util;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: com.areteinc.action.Activator
+Bundle-Vendor: ARETEINC
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.ui.console;bundle-version="3.5.100"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy
