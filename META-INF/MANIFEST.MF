@@ -7,6 +7,7 @@ Bundle-Activator: com.areteinc.action.Activator
 Bundle-Vendor: ARETEINC
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- org.eclipse.ui.console;bundle-version="3.5.100"
+ org.eclipse.ui.console;bundle-version="3.5.100",
+ org.eclipse.core.resources;bundle-version="3.7.101"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy

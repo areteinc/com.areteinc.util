@@ -16,12 +16,12 @@
             </separator>
          </menu>
          <action
-               label="&amp;Sample Action"
-               icon="icons/sample.gif"
-               class="com.areteinc.action.actions.SampleAction"
-               tooltip="Hello, Eclipse world"
+               class="com.areteinc.action.DiffFileAction"
+               icon="icons/diffmerge.png"
+               id="com.areteinc.action.DiffAction"
+               label="Show Difference"
                menubarPath="sampleMenu/sampleGroup"
-               id="com.areteinc.action.actions.SampleAction">
+               toolbarPath="util">
          </action>
          <action
                class="com.areteinc.action.CreateBranchAction"
@@ -36,22 +36,29 @@
    <extension
          point="org.eclipse.ui.commands">
       <command
-            defaultHandler="com.areteinc.action.Handler1"
-            id="com.areteinc.action.command1"
-            name="SampleCommand">
+            defaultHandler="com.areteinc.action.CreateBranchAction"
+            id="com.areteinc.command.createbranch"
+            name="Create Branch Action">
+      </command>
+      <command
+            defaultHandler="com.areteinc.handler.CreateBranchHandler"
+            id="com.areteinc.command.createbranchhandler"
+            name="Create Branch Handler">
       </command>
    </extension>
    <extension
          point="org.eclipse.ui.menus">
       <menuContribution
             allPopups="false"
-            locationURI="popup:org.eclipse.jdt.ui.PackageExplorer">
-         <command
-               commandId="com.areteinc.action.command1"
-               label="My Command"
-               style="push"
-               tooltip="My Command Tooltip">
-         </command>
+            locationURI="popup:org.eclipse.ui.navigator.ProjectExplorer#PopupMenu?after=additions">
+         <menu
+               label="Util">
+            <command
+                  commandId="com.areteinc.command.createbranchhandler"
+                  label="Create Branch"
+                  style="push">
+            </command>
+         </menu>
       </menuContribution>
    </extension>
    <extension

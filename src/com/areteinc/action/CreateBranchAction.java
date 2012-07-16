@@ -1,36 +1,15 @@
 package com.areteinc.action;
 
 import org.eclipse.jface.action.IAction;
-import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.ui.IWorkbenchWindow;
-import org.eclipse.ui.IWorkbenchWindowActionDelegate;
+import org.eclipse.jface.viewers.IStructuredSelection;
 
-import com.areteinc.handler.SampleHandler;
+public class CreateBranchAction extends BaseAction {
 
-public class CreateBranchAction implements IWorkbenchWindowActionDelegate {
-
+	
 	@Override
 	public void run(IAction action) {
-		// TODO Auto-generated method stub
-		SampleHandler sampleHandler = new SampleHandler();
-		sampleHandler.createBranches();
+		handlerUtil.createBranches(); // TODO
 	}
 
-	@Override
-	public void selectionChanged(IAction action, ISelection selection) {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void dispose() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void init(IWorkbenchWindow window) {
-		// TODO Auto-generated method stub
-
-	}
 
 }
