@@ -21,6 +21,8 @@ import org.eclipse.ui.console.IConsoleManager;
 import org.eclipse.ui.console.MessageConsole;
 import org.eclipse.ui.console.MessageConsoleStream;
 
+/*
+ * */
 public class HandlerUtil {
 	
 	public HandlerUtil(){
@@ -220,6 +222,8 @@ public class HandlerUtil {
 		    	messageStream.println(outputLine);
 		    }
 		    
+		    messageStream.println("[HandlerUtil.runCommand] command: " + command + ", workingDir: " + workingDir.getAbsolutePath());
+		    
 		    inputStream.close();
 		    errorStream.close();
 		    messageStream.close();
@@ -228,8 +232,7 @@ public class HandlerUtil {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			System.err.println("[HandlerUtil.runCommand] command: " + command);
-			System.err.println("[HandlerUtil.runCommand] workingDir: " + workingDir.getAbsolutePath());
+			
 		}
 	    
 	}
