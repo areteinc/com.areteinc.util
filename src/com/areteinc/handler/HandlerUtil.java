@@ -214,6 +214,8 @@ public class HandlerUtil {
 		    inputStream = new BufferedReader(new InputStreamReader(process.getInputStream()));
 		    errorStream = new BufferedReader(new InputStreamReader(process.getErrorStream()));
 		    
+		    messageStream.println("[HandlerUtil.runCommand] command: " + command + ", workingDir: " + workingDir.getAbsolutePath());
+		    
 			while ((outputLine = inputStream.readLine()) != null){
 				messageStream.println(outputLine);
 			}
@@ -221,8 +223,6 @@ public class HandlerUtil {
 		    while ((outputLine = errorStream.readLine()) != null){
 		    	messageStream.println(outputLine);
 		    }
-		    
-		    messageStream.println("[HandlerUtil.runCommand] command: " + command + ", workingDir: " + workingDir.getAbsolutePath());
 		    
 		    inputStream.close();
 		    errorStream.close();
