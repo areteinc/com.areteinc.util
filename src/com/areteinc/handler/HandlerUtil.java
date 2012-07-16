@@ -13,6 +13,7 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.jface.dialogs.InputDialog;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.console.ConsolePlugin;
@@ -37,8 +38,11 @@ public class HandlerUtil {
 		IStructuredSelection selection = getSelection();	
 		Object selectedElement = selection.getFirstElement();
 		
-		
-		if (selectedElement instanceof IFile) {
+		if (selection.isEmpty()) {
+			throw new Exception("empty selection");
+		} else if (selectedElement == null) {
+			throw new Exception("null selected resource");
+		} else if (selectedElement instanceof IFile) {
 			return (IFile) selectedElement;
 		} else if (selectedElement instanceof IResource) {
 			return (IResource) selectedElement;
@@ -144,12 +148,16 @@ public class HandlerUtil {
 			project = resource.getProject();
 			command = "cmd /c git difftool HEAD --no-prompt " + getRelativePath(resource, project);
 		} catch (Exception e) {
-			e.printStackTrace();
+			showMessage(e.toString()+"\n"+e.getMessage()+"\n"+e.getStackTrace()[0]);
 		}
 		
 		Thread thread = new Thread(new FileDiffTool(command, project));
 		thread.start();
 		
+	}
+	
+	public void showMessage(String msg) {
+		MessageDialog.openInformation(null, "Util", msg);
 	}
 	
 	private class FileDiffTool implements Runnable {
@@ -230,7 +238,7 @@ public class HandlerUtil {
 		    process.waitFor();
 		    
 		} catch (Exception e) {
-			e.printStackTrace();
+			showMessage(e.getMessage());
 		} finally {
 			
 		}
